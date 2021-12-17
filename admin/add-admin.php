@@ -61,7 +61,7 @@
         if($res==TRUE){
             //Data inserted
             //Create a session variable to display message 
-            $_SESSION['add'] = "Successfull";
+            $_SESSION['add'] = "Admin Added Successfully";
             
             //Redirect page to Manage Admin bir önceki sayfa
             header("location:".SITEURL."admin/manage-admin.php");
@@ -69,7 +69,7 @@
         else{
             //Failed to insert data
             //Create a session variable to display message 
-            $_SESSION['add'] = "Error";
+            $_SESSION['add'] = "Failed to Add Admin";
             
             //Redirect page to Add Admin , bulundugu yer
             header("location:".SITEURL."admin/add-admin.php");
