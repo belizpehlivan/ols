@@ -3,7 +3,7 @@
 include('../config/constants.php');
 
 // Get de ID of the admin to be deleted
-echo $id = $_GET['id'];
+$id = $_GET['id'];
 
 // Create sql query to delete admin
 $sql = "DELETE FROM admin WHERE id=$id";
@@ -28,8 +28,6 @@ else{
    //Redirect to manage-admin page
    header('location:'.SITEURL.'admin/manage-admin.php');
 }
-// Redirect to manage admin page with messg success or failed
 
-//
 
 ?>
