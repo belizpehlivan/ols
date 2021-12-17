@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper{
+    padding: 1%;
+    width: 90%; /*ekranın %90ini kaplar*/
+    margin: 0 auto; /*centers on screen*/
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.text-left{
+    text-align: left;
+}
+
+/*dahsboard footer birbirine girmişti*/
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+.tbl-full{
+    width: 100%;
+}
+
+.tbl-30{
+    width: 30%;
+}
+
+table tr th{
+    border-bottom: 1px solid black;
+    padding: 1%;
+    text-align: left;
+}
+
+table tr td{
+    padding: 1%;
+}
+
+.btn{
+    border-radius: 5px;
+    text-decoration: none; /* Underline is gone*/ 
+    padding: 1%;
+    color: white;
+}
+
+.btn-primary{
+    background-color: #0099CC; 
+}
+
+.btn-primary:hover{
+    background-color: #33b5e5;
+}
+
+.btn-secondary{
+    background-color: #007E33;
+}
+
+.btn-secondary:hover{
+    background-color: #00C851;
+}
+
+.btn-danger{
+    background-color: #CC0000;
+}
+
+.btn-danger:hover{
+    background-color: #ff4444;
+}
+
+/* CSS for Menu*/
+.menu{
+    border-bottom: 1px solid #a4b0be;
+}
+
+.menu ul{
+    list-style-type: none; /* Liste noktaları gider*/
+}
+
+.menu ul li{
+    display: inline; /*List in horizontal line*/
+    padding: 1%;
+}
+
+.menu ul li a{
+    text-decoration: none; /* Underline is gone*/
+    font-weight: bold;
+    color: #747d8c;
+}
+
+.menu ul li a:hover{
+    color: #57606f;
+}
+
+/* CSS for Main Content*/
+.main-content{
+    /* bottom-top right-left*/
+     background-color: #f9f9f9;
+     padding: 3% 0;
+ }
+ 
+ .col-3{
+     width: 25%;
+     background-color: white;
+     margin: 1%;
+     padding: 2%;
+     float: left;
+ }
+ .main-content h4{
+     text-decoration: none; /* Underline is gone*/
+     font-weight: bold;
+     color: #747d8c;
+     border-bottom: 1px solid #a4b0be;
+ }
+ 
+ .main-content h4:hover{
+     color: #57606f;
+ }
+ .main-content ul{
+     list-style-type: none;
+     margin: 2%;
+ }
+ 
+ .main-content ul li{
+     text-decoration: none;
+ }
+
+/* CSS for Footer*/
+.footer{
+    background-color: #747d8c;
+    color: white;
+}
