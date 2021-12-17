@@ -47,10 +47,11 @@ table tr td{
 }
 
 .btn{
-    border-radius: 5px;
+    border-radius: 4px;
     text-decoration: none; /* Underline is gone*/ 
     padding: 1%;
     color: white;
+    font-size: 13px;
 }
 
 .btn-primary{
@@ -104,35 +105,40 @@ table tr td{
 /* CSS for Main Content*/
 .main-content{
     /* bottom-top right-left*/
-     background-color: #f9f9f9;
-     padding: 3% 0;
+    background-color: #f9f9f9;
+    padding: 3% 0;
  }
  
- .col-3{
-     width: 25%;
-     background-color: white;
-     margin: 1%;
-     padding: 2%;
-     float: left;
- }
- .main-content h4{
-     text-decoration: none; /* Underline is gone*/
-     font-weight: bold;
-     color: #747d8c;
-     border-bottom: 1px solid #a4b0be;
+.col-3{
+    width: 25%;
+    background-color: white;
+    margin: 1%;
+    padding: 2%;
+    float: left;
+}
+.main-content h4{
+    text-decoration: none; /* Underline is gone*/
+    font-weight: bold;
+    color: #747d8c;
+    border-bottom: 1px solid #a4b0be;
+}
+ 
+.main-content h4:hover{
+    color: #57606f;
  }
  
- .main-content h4:hover{
-     color: #57606f;
- }
- .main-content ul{
-     list-style-type: none;
-     margin: 2%;
- }
+.main-content ul{
+    list-style-type: none;
+    margin: 2%;
+}
  
  .main-content ul li{
      text-decoration: none;
  }
+
+.main-content h1{
+    color: #2f3542;
+}
 
 /* CSS for Footer*/
 .footer{

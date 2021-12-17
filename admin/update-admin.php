@@ -79,7 +79,7 @@
         $sql = "UPDATE admin SET
         full_name = '$full_name',
         username = '$username'
-        WHERE id = '$id';
+        WHERE id = '$id'
         ";
 
         // Exetuce Query
