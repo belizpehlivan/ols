@@ -11,16 +11,7 @@
             <div class="wrapper">
                 <h1>Courses</h1>
                 <div class="course">
-                    <h4>Course Name</h4>
-                </div>
-                <div class="course">
-                    <h4>Course Name</h4>
-                </div>
-                <div class="course">
-                    <h4>Course Name</h4>
-                </div>
-                <div class="course">
-                    <h4>Course Name</h4>
+                    <h4></h4>
                 </div>
                 <div class="clearfix"></div>
             </div>
