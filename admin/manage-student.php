@@ -27,7 +27,7 @@
                         <td>belizpehlivan</td>
                         <td>
                             <a href="#" class="btn btn-secondary">Update</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="<?php echo SITEURL;?>admin/delete-student.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     <tr>
