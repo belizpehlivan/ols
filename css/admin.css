@@ -140,8 +140,17 @@ table tr td{
     color: #2f3542;
 }
 
-/* CSS for Footer*/
+/* CSS for Footer */
 .footer{
     background-color: #747d8c;
     color: white;
+}
+
+
+/* CSS for Login */
+.login{
+    width: 30%;
+    border: 1px solid grey;
+    margin: 5% auto; /* auto makes it center horizontally*/
+    padding: 2%;
 }
