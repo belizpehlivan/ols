@@ -18,7 +18,7 @@ if($res == TRUE){
    $_SESSION['delete'] = "Course Deleted Successfully";
 
    //Redirect to manage-admin page
-   header('location:'.SITEURL.'admin/manage-course.php');
+   header('location:'.SITEURL.'admin/manage-courses.php');
 }
 else{
     //echo "error";
@@ -26,7 +26,7 @@ else{
     $_SESSION['delete'] = "Failed to Delete Course";
 
     //Redirect to manage-admin page
-    header('location:'.SITEURL.'admin/manage-course.php');
+    header('location:'.SITEURL.'admin/manage-courses.php');
 }
 
 
