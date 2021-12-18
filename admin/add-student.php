@@ -62,11 +62,11 @@
         // Check whether the query executed or not and display message
         if($res==TRUE){
             $_SESSION['add'] = "Student Added Successfully";
-            header("location:".SITEURL."admin/manage-teacher.php");
+            header("location:".SITEURL."admin/manage-student.php");
         }
         else{
             $_SESSION['add'] = "Failed to Add Student";
-            header("location:".SITEURL."admin/add-teacher.php");
+            header("location:".SITEURL."admin/add-student.php");
         }
     }
 ?>

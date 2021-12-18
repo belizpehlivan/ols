@@ -4,8 +4,19 @@
         <div class="main-content">
             <div class="wrapper">
                 <h1>Manage Courses</h1>
+                <br>
+                <?php   
+                    if(isset($_SESSION['add'])){
+                        echo $_SESSION['add'];
+                        unset($_SESSION['add']); 
+                    }
+                    if(isset($_SESSION['instructor-not-found'])){
+                        echo $_SESSION['instructor-not-found'];
+                        unset($_SESSION['instructor-not-found']); 
+                    }
+                ?>
                 <br><br>
-                <a href="#" class="btn btn-primary">Add Course</a>
+                <a href="<?php echo SITEURL; ?>admin/add-course.php" class="btn btn-primary">Add Course</a>
                 <br><br>
                 <table class="tbl-full">
                     <tr>
