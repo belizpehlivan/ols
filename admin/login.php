@@ -13,8 +13,12 @@
                     echo $_SESSION['login']; // Display session message
                     unset($_SESSION['login']); // Remove session message
                 }
+                if(isset($_SESSION['no-login-message'])){
+                    echo $_SESSION['no-login-message']; // Display session message
+                    unset($_SESSION['no-login-message']); // Remove session message
+                }
             ?>
-            <br><br>
+            <br>
 
             <!-- Login Form Starts Here -->
 
@@ -54,11 +58,20 @@
         $count = mysqli_num_rows($res);
 
         if($count == 1){
+
             $_SESSION['login'] = "Login Successfull";
+
+            // Want to check whther the user is logged in or not
+            // Add session
+            // This value is set when only on login
+            // Also, destroy this user session on the logout.php
+            $_SESSION['user'] = $username;
+
             header("location:".SITEURL."admin/");
         }
         else{
-            $_SESSION['login'] = "Failed To Login";
+
+            $_SESSION['login'] = "<div class='text-center'>Failed To Login</div>";
             header("location:".SITEURL."admin/login.php");
         }
     }
