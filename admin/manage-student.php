@@ -19,36 +19,63 @@
                         <th>S.N.</th>
                         <th>Full Name</th>
                         <th>Username</th>
+                        <th>Mail</th>
                         <th>Actions</th>
                     </tr>
-                    <tr>
-                        <td>1.</td>
-                        <td>Beliz Pehlivan</td>
-                        <td>belizpehlivan</td>
-                        <td>
-                            <a href="#" class="btn btn-secondary">Update</a>
-                            <a href="<?php echo SITEURL;?>admin/delete-student.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2.</td>
-                        <td>Beliz Pehlivan</td>
-                        <td>belizpehlivan</td>
-                        <td>
-                            <a href="#" class="btn btn-secondary">Update</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3.</td>
-                        <td>Beliz Pehlivan</td>
-                        <td>belizpehlivan</td>
-                        <td>
-                            <a href="#" class="btn btn-secondary">Update</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
-                       
-                        </td>
-                    </tr>
+                    <?php 
+                        //Query to get all admin
+                        $sql = "SELECT * FROM student";
+
+                        //Execute the query
+                        $res = mysqli_query($conn, $sql);
+
+                        //Check whether the query is executed or not
+                        if($res==TRUE){
+                            //Count Rows we have data in db
+                            $count = mysqli_num_rows($res);
+
+                            $sn  = 1;
+
+                            //Check the num of rows
+                            if($count > 0){
+
+                                while($rows = mysqli_fetch_assoc($res)){
+                                    //Using while loop to get all data from database
+                                    //Loop will run as long as we data in database
+                                    //Get individual data
+                                    $id = $rows['id'];
+                                    $full_name = $rows['full_name'];
+                                    $username = $rows['username'];
+                                    $mail = $rows['mail'];
+
+                                    //Display the values in the table
+                                    ?>
+
+                                    <tr>
+                                        <td><?php echo $sn++; ?></td>
+                                        <td><?php echo $full_name; ?></td>
+                                        <td><?php echo $username; ?></td>
+                                        <td><?php echo $mail; ?></td>
+                                        <td>
+                                            <a href="<?php echo SITEURL;?>admin/update-student.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update</a>
+                                            <a href="<?php echo SITEURL;?>admin/delete-student.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>                                        </td>
+                                    </tr>
+
+                                    <?php
+                                }
+
+                            }else{
+                                // We dont have data
+                                ?>
+                                    <tr>
+                                        <td colspan="5">No Student Added</td>
+                                    </tr>
+                                <?php
+                            }
+
+                        }
+
+                    ?>
                 </table>
             </div>
         </div>
