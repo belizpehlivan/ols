@@ -25,7 +25,7 @@
                         </tr>
                         <tr>
                             <td>Password:</td>
-                            <td><input type="text" name="password" placeholder="Enter Password"></td>
+                            <td><input type="password" name="password" placeholder="Enter Password"></td>
                         </tr>
                         <tr>
                             <td class="colspan=2"><input type="submit" name="submit" value="Add" class="btn btn-secondary"></td>

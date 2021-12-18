@@ -12,7 +12,7 @@
                     }
                 ?>
 
-            <br><br>
+                <br><br>
 
                 <!-- Button to Add Admin-->
                 <a href="<?php echo SITEURL; ?>admin/add-teacher.php" class="btn btn-primary">Add Teacher</a>

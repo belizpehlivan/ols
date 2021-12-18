@@ -68,7 +68,6 @@
             $_SESSION['add'] = "Failed to Add Teacher";
             header("location:".SITEURL."admin/add-teacher.php");
         }
-
     }
 ?>
     </div>
