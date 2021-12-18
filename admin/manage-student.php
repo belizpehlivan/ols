@@ -4,8 +4,15 @@
         <div class="main-content">
             <div class="wrapper">
                 <h1>Manage Student</h1>
+                <br>
+                <?php   
+                    if(isset($_SESSION['add'])){
+                        echo $_SESSION['add'];
+                        unset($_SESSION['add']); 
+                    }
+                ?>
                 <br><br>
-                <a href="#" class="btn btn-primary">Add Student</a>
+                <a href="<?php echo SITEURL; ?>admin/add-student.php" class="btn btn-primary">Add Student</a>
                 <br><br>
                 <table class="tbl-full">
                     <tr>
