@@ -4,8 +4,18 @@
         <div class="main-content">
             <div class="wrapper">
                 <h1>Manage Teacher</h1>
-                <br><br>
-                <a href="#" class="btn btn-primary">Add Teacher</a>
+                <br>
+                <?php   
+                    if(isset($_SESSION['add'])){
+                        echo $_SESSION['add'];
+                        unset($_SESSION['add']); 
+                    }
+                ?>
+
+            <br><br>
+
+                <!-- Button to Add Admin-->
+                <a href="<?php echo SITEURL; ?>admin/add-teacher.php" class="btn btn-primary">Add Teacher</a>
                 <br><br>
                 <table class="tbl-full">
                     <tr>
