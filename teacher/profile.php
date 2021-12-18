@@ -1,14 +1,4 @@
 <?php include('partials/menu.php'); ?>
-
-        <!--Navbar Section Starts-->
-        <div class="navbar">
-            <div class="wrapper">
-                Navbar > Navbar > Navbar
-            </div>
-        </div>
-        <!--Navbar Section Ends-->
-
-
         <!--Main Content Sectiopn Starts-->
         <div class="main-content">
             <div class="wrapper">
@@ -16,7 +6,7 @@
                 <div class="col-4 text-left">
                     <h4>User Details</h4>
                     <br>
-
+                    
                     <?php
                         //Query to get all admin
                         $act_user = $_SESSION['user'];
@@ -29,28 +19,49 @@
                                 $full_name = $rows['full_name'];
                                 $username = $rows['username'];
                                 $mail = $rows['mail'];
+                                $id = $rows['id'];
+                        
+                                ?>
+                                
+                                Name: <span class="font-small"><?php echo $full_name; ?></span><br><br>            
+                                Username: <span class="font-small"><?php echo $username; ?></span><br><br>
+                                Mail: <span class="font-small"><?php echo $mail; ?></span><br><br>
+                                <?php
                             }
-                            else
-                            {
-                                header('location:'.SITEURL.'teacher/index.php');
+                            else{
+                                    echo  "<br>No Course";
                             }
+                            
                         }
                     ?>
-                        Name: <span class="font-small"><?php echo $full_name; ?></span><br><br>            
-                        Username: <span class="font-small"><?php echo $username; ?></span><br><br>
-                        Mail: <span class="font-small"><?php echo $mail; ?></span><br><br>
-                </div>
-                <div class="col-4 text-left">
-                    <h4>Courses</h4>
-                    <ul class="text-left">
-                        <li>Name</li>
-                        <li>Name</li>
-                        <li>Name</li>
-                    </ul>
-                </div>
+                    </div>
+                    <div class="col-4 text-left">
+                        <h4>Courses</h4>
+                        <br>
+                        <ul class="text-left">
+                            <?php
+                                $sql2 = "SELECT * FROM course WHERE instructor_id = '$id'";
+                                $res2 = mysqli_query($conn, $sql2);
+                                if($res2==TRUE){
+                                    $count2 = mysqli_num_rows($res2);
+                                    if($count2 > 0){
+                                        while($rowscourse = mysqli_fetch_assoc($res2)){
+                                            $course_code = $rowscourse['code'];
+                                            ?>
+                                              <li class="margin-2"><?php echo $course_code; ?></li>
+                                            <?php
+                                        }
+                                    }else{
+                                         //no course
+                                    }
+                                }
+                            ?>
+                        </ul>
+                    </div>
                 <div class="clearfix"></div>
             </div>
         </div>
         <!--Main Content Section Ends-->
 
 <?php include('partials/footer.php'); ?>
+
