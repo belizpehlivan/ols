@@ -18,6 +18,10 @@
                         echo $_SESSION['delete'];
                         unset($_SESSION['delete']); 
                     }
+                    if(isset($_SESSION['update'])){
+                        echo $_SESSION['update'];
+                        unset( $_SESSION['update']); 
+                    }
                 ?>
                 <br><br>
                 <a href="<?php echo SITEURL; ?>admin/add-course.php" class="btn btn-primary">Add Course</a>
