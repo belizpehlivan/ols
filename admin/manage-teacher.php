@@ -10,6 +10,10 @@
                         echo $_SESSION['add'];
                         unset($_SESSION['add']); 
                     }
+                    if(isset($_SESSION['delete'])){
+                        echo $_SESSION['delete'];
+                        unset($_SESSION['delete']); 
+                    }
                 ?>
 
                 <br><br>
@@ -20,6 +24,7 @@
                 <table class="tbl-full">
                     <tr>
                         <th>S.N.</th>
+                        <th>ID</th>
                         <th>Full Name</th>
                         <th>Username</th>
                         <th>Mail</th>
@@ -56,6 +61,7 @@
 
                                     <tr>
                                         <td><?php echo $sn++; ?></td>
+                                        <td><?php echo $id; ?></td>
                                         <td><?php echo $full_name; ?></td>
                                         <td><?php echo $username; ?></td>
                                         <td><?php echo $mail; ?></td>
@@ -71,7 +77,7 @@
                                 // We dont have data
                                 ?>
                                     <tr>
-                                        <td colspan="5">No Teacher Added</td>
+                                        <td colspan="6">No Teacher Added</td>
                                     </tr>
                                 <?php
                             }

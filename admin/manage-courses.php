@@ -14,6 +14,10 @@
                         echo $_SESSION['instructor-not-found'];
                         unset($_SESSION['instructor-not-found']); 
                     }
+                    if(isset($_SESSION['delete'])){
+                        echo $_SESSION['delete'];
+                        unset($_SESSION['delete']); 
+                    }
                 ?>
                 <br><br>
                 <a href="<?php echo SITEURL; ?>admin/add-course.php" class="btn btn-primary">Add Course</a>

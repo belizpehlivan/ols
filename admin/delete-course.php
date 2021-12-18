@@ -6,7 +6,7 @@ include('../config/constants.php');
 $id = $_GET['id'];
 
 // 2.Create sql query to delete admin
-$sql = "DELETE FROM admin WHERE id=$id";
+$sql = "DELETE FROM course WHERE id=$id";
 
 // 3.Execute the query
 $res = mysqli_query($conn, $sql);
@@ -15,18 +15,18 @@ $res = mysqli_query($conn, $sql);
 if($res == TRUE){
    // echo "successful";
    //Create session variable to display message 
-   $_SESSION['delete'] = "Admin Deleted Successfully";
+   $_SESSION['delete'] = "Course Deleted Successfully";
 
    //Redirect to manage-admin page
-   header('location:'.SITEURL.'admin/manage-admin.php');
+   header('location:'.SITEURL.'admin/manage-course.php');
 }
 else{
     //echo "error";
     //Create session variable to display message 
-    $_SESSION['delete'] = "Failed to Delete Admin";
+    $_SESSION['delete'] = "Failed to Delete Course";
 
     //Redirect to manage-admin page
-    header('location:'.SITEURL.'admin/manage-admin.php');
+    header('location:'.SITEURL.'admin/manage-course.php');
 }
 
 
