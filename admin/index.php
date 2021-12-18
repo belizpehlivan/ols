@@ -4,6 +4,14 @@
         <div class="main-content">
             <div class="wrapper">
                 <h1>DASHBOARD</h1>
+                <br><br>
+                <?php   
+                    if(isset($_SESSION['login'])){
+                        echo $_SESSION['login']; // Display session message
+                        unset($_SESSION['login']); // Remove session message
+                    }
+                ?>
+                <br>
                 <div class="col-3 text-center">
                     <h1>20</h1>
                     <br>

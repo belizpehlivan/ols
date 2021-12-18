@@ -15,6 +15,7 @@
                     <li><a href="manage-teacher.php">Teacher</a></li>
                     <li><a href="manage-student.php">Student</a></li>
                     <li><a href="manage-courses.php">Courses</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
