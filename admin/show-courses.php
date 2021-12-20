@@ -19,6 +19,7 @@
                         <th>Student ID</th>
                         <th>Course Code</th>
                         <th>Course ID</th>
+                        <th>Actions</th>
                     </tr>
                     <?php 
                         //Query to get all
