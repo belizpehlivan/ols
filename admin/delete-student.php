@@ -13,6 +13,9 @@ $res = mysqli_query($conn, $sql);
 
 // 4.Check whether the query executed successfully or not
 if($res == TRUE){
+    $sql2 = "DELETE FROM course_student WHERE student_id=$id";
+    $res2 = mysqli_query($conn, $sql2);
+    
    // echo "successful";
    //Create session variable to display message 
    $_SESSION['delete'] = "Student Deleted Successfully";

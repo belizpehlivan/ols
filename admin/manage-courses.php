@@ -22,13 +22,24 @@
                         echo $_SESSION['update'];
                         unset( $_SESSION['update']); 
                     }
+                    if(isset($_SESSION['delete-course-of-student'])){
+                        echo $_SESSION['delete-course-of-student'];
+                        unset($_SESSION['delete-course-of-student']); 
+                    }
+                    if(isset($_SESSION['add-student-to-course'])){
+                        echo $_SESSION['add-student-to-course'];
+                        unset($_SESSION['add-student-to-course']); 
+                    }
+
                 ?>
                 <br><br>
                 <a href="<?php echo SITEURL; ?>admin/add-course.php" class="btn btn-primary">Add Course</a>
+                <a href="<?php echo SITEURL; ?>admin/show-courses.php" class="btn btn-primary">Show Student Courses</a>
                 <br><br>
                 <table class="tbl-full">
                     <tr>
                         <th>S.N.</th>
+                        <th>Course ID</th>
                         <th>Course Code</th>
                         <th>Instructor Name</th>
                         <th>Actions</th>
@@ -63,11 +74,14 @@
 
                                     <tr>
                                         <td><?php echo $sn++; ?></td>
+                                        <td><?php echo $id; ?></td>
                                         <td><?php echo $code; ?></td>
                                         <td><?php echo $instructor_id; ?></td>
                                         <td>
                                             <a href="<?php echo SITEURL;?>admin/update-course.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update</a>
-                                            <a href="<?php echo SITEURL;?>admin/delete-course.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>                                        </td>
+                                            <a href="<?php echo SITEURL;?>admin/delete-course.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
+                                            <a href="<?php echo SITEURL;?>admin/add-student-to-course.php?course_id=<?php echo $id;?>&course_code=<?php echo $code;?>" class="btn btn-primary">Add Student</a>
+                                        </td>
                                     </tr>
 
                                     <?php

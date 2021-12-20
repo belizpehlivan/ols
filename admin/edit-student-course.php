@@ -3,14 +3,14 @@
     <!--Main Content Sectiopn Starts-->
     <div class="main-content">
         <div class="wrapper">
-            <h1>Update Student</h1>
+            <h1>Edit Student Courses</h1>
 
             <br><br>
 
             <?php   
                                 
                 // 1.Get the ID of selected admin
-                $id = $_GET['id'];
+                echo $id = $_GET['id'];
 
                 // 2.Create sql query to get details
                 $sql = "SELECT * FROM student WHERE id=$id";
@@ -25,11 +25,26 @@
 
                     $count = mysqli_num_rows($res);
                     if($count == 1){
-                        //Get the details
-                        $rows = mysqli_fetch_assoc($res);
-                        $full_name = $rows['full_name'];
-                        $username = $rows['username'];
-                        $mail = $rows['mail'];
+                       
+                        $sql2 = "SELECT * FROM course_student WHERE student_id = '$id'";
+                        $res2 = mysqli_query($conn, $sql2);
+                        if($res2==TRUE){
+                            $count2 = mysqli_num_rows($res2);
+                            if($count2 > 0){
+                                while($rowscourse = mysqli_fetch_assoc($res2)){
+                                    $course_code = $rowscourse['course_code'];
+                                    ?>
+                                        <div class="course">
+                                            <a href=""></a>
+                                        <h4><?php echo $course_code; ?></h4>
+                                        </div>
+                                    <?php
+                                }
+                            }else{
+                                 //no course
+                                 echo "no course";
+                            }
+                        }
                     }
                     else
                     {
@@ -43,30 +58,12 @@
             <form action="" method="POST">
                 <table class="tbl-30">
                     <tr>
-                        <td>Full Name:</td>
+                        <td>Course Code</td>
                         <td>
                             <input type="text" name="full_name" value="<?php echo $full_name; ?>">
                         </td>
                     </tr>
-                    <tr>
-                        <td>Username:</td>
-                        <td>
-                            <input type="text" name="username" value="<?php echo $username; ?>">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Mail:</td>
-                        <td>
-                            <input type="text" name="mail" value="<?php echo $mail; ?>">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="colspan=2">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>">
-                            <input type="submit" name="submit" value="Update" class="btn btn-secondary">
-                        </td>
-                    </tr>
-                </table>
+                    </table>
             </form>
         </div>
     </div>
@@ -96,12 +93,6 @@
         // Check whether the query executed or not and display message
         if($res==TRUE){
         
-            $sql2 = "UPDATE course_student SET
-            student_name = '$full_name'
-            WHERE student_id = '$id'
-            ";
-            $res2 = mysqli_query($conn, $sql2);
-
             //Create a session variable to display message 
             $_SESSION['update'] = "Student Updated";
             

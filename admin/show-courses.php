@@ -3,37 +3,26 @@
         <!--Main Content Sectiopn Starts-->
         <div class="main-content">
             <div class="wrapper">
-                <h1>Manage Student</h1>
+                <h1>Courses</h1>
                 <br>
                 <?php   
-                    if(isset($_SESSION['add'])){
-                        echo $_SESSION['add'];
-                        unset($_SESSION['add']); 
-                    }
                     if(isset($_SESSION['delete'])){
                         echo $_SESSION['delete'];
                         unset($_SESSION['delete']); 
                     }
-                    if(isset($_SESSION['update'])){
-                        echo $_SESSION['update'];
-                        unset( $_SESSION['update']); 
-                    }
                 ?>
-                <br><br>
-                <a href="<?php echo SITEURL; ?>admin/add-student.php" class="btn btn-primary">Add Student</a>
                 <br><br>
                 <table class="tbl-full">
                     <tr>
                         <th>S.N.</th>
-                        <th>ID</th>
-                        <th>Full Name</th>
-                        <th>Username</th>
-                        <th>Mail</th>
-                        <th>Actions</th>
+                        <th>Student Name</th>
+                        <th>Student ID</th>
+                        <th>Course Code</th>
+                        <th>Course ID</th>
                     </tr>
                     <?php 
-                        //Query to get all admin
-                        $sql = "SELECT * FROM student";
+                        //Query to get all
+                        $sql = "SELECT * FROM course_student";
 
                         //Execute the query
                         $res = mysqli_query($conn, $sql);
@@ -52,24 +41,24 @@
                                     //Using while loop to get all data from database
                                     //Loop will run as long as we data in database
                                     //Get individual data
-                                    $id = $rows['id'];
-                                    $full_name = $rows['full_name'];
-                                    $username = $rows['username'];
-                                    $mail = $rows['mail'];
+                                    $student_id = $rows['student_id'];
+                                    $student_name = $rows['student_name'];
+                                    $course_id = $rows['course_id'];
+                                    $course_code = $rows['course_code'];
+                                    //$instructor_id = $rows['instructor_id'];
 
                                     //Display the values in the table
                                     ?>
 
                                     <tr>
                                         <td><?php echo $sn++; ?></td>
-                                        <td><?php echo $id; ?></td>
-                                        <td><?php echo $full_name; ?></td>
-                                        <td><?php echo $username; ?></td>
-                                        <td><?php echo $mail; ?></td>
+                                        <td><?php echo $student_name; ?></td>
+                                        <td><?php echo $student_id; ?></td>
+                                        <td><?php echo $course_code; ?></td>
+                                        <td><?php echo $course_id; ?></td>
+                                        <!-- <td><?php echo $instructor_id; ?></td> -->
                                         <td>
-                                            <a href="<?php echo SITEURL;?>admin/update-student.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update</a>
-                                            <a href="<?php echo SITEURL;?>admin/delete-student.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>                                      
-                                            <a href="<?php echo SITEURL;?>admin/edit-student-course.php?student_id=<?php echo $id; ?>&student_name=<?php echo $full_name;?>" class="btn btn-primary">Edit Courses</a>
+                                            <a href="<?php echo SITEURL;?>admin/delete-course-from-student.php?student_id=<?php echo $student_id; ?>&course_id=<?php echo $course_id;?>" class="btn btn-danger">Delete</a>                                        
                                         </td>
                                     </tr>
 
@@ -80,7 +69,7 @@
                                 // We dont have data
                                 ?>
                                     <tr>
-                                        <td colspan="5">No Student Added</td>
+                                        <td colspan="4">No Course Added</td>
                                     </tr>
                                 <?php
                             }

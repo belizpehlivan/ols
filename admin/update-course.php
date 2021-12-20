@@ -29,6 +29,7 @@
                         $rows = mysqli_fetch_assoc($res);
                         $code = $rows['code'];
                         $instructor_id = $rows['instructor_id'];
+        
                     }
                     else
                     {
@@ -48,7 +49,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Username:</td>
+                        <td>Instructor ID:</td>
                         <td>
                             <input type="text" name="instructor_id" value="<?php echo $instructor_id; ?>">
                         </td>
@@ -87,10 +88,17 @@
         // Check whether the query executed or not and display message
         if($res==TRUE){
         
-            //Create a session variable to display message 
-            $_SESSION['update'] = "Course Updated";
+            $selected_course_id = $_GET['id'];
             
-            //Redirect page to Manage Admin bir önceki sayfa
+            $sql2 = "UPDATE course_student SET
+            course_code = '$code'
+            WHERE course_id = '$selected_course_id'
+            ";
+            $res2 = mysqli_query($conn, $sql2);
+      
+
+           
+            $_SESSION['update'] = "Course Updated";
             header("location:".SITEURL."admin/manage-courses.php");
         }
         else{
