@@ -60,6 +60,7 @@
         if($count == 1){
 
             $_SESSION['login'] = "Login Successfull";
+            $_SESSION['admin'] = TRUE;
 
             // Want to check whther the user is logged in or not
             // Add session
@@ -70,7 +71,8 @@
             header("location:".SITEURL."admin/");
         }
         else{
-
+                   
+            $_SESSION['admin'] = FALSE;
             $_SESSION['login'] = "<div class='text-center'>Failed To Login</div>";
             header("location:".SITEURL."admin/login.php");
         }

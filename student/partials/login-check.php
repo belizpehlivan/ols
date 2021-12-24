@@ -14,5 +14,11 @@
         */
     }
     
+    if(!$_SESSION['student']){  
+        
 
+        $_SESSION['no-login-message'] = "<div class='text-center'>Please Login</div>";
+        header("location:".SITEURL."login.php"); 
+
+    }
 ?>

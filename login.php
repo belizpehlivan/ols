@@ -68,14 +68,14 @@
         $count = mysqli_num_rows($res);
 
         if($count == 1){
-
-            $_SESSION['login'] = "Login Successfull";
-
+      
             // Want to check whther the user is logged in or not
             // Add session
             // This value is set when only on login
             // Also, destroy this user session on the logout.php
             $_SESSION['user'] = $username;
+            $_SESSION['teacher'] = TRUE;
+            $_SESSION['student'] = FALSE;
 
             header("location:".SITEURL."teacher/");
         }
@@ -102,13 +102,15 @@
 
         if($count == 1){
 
-            $_SESSION['login'] = "Login Successfull";
+           
 
             // Want to check whther the user is logged in or not
             // Add session
             // This value is set when only on login
             // Also, destroy this user session on the logout.php
             $_SESSION['user'] = $username;
+            $_SESSION['student'] = TRUE;
+            $_SESSION['teacher'] = FALSE;
 
             header("location:".SITEURL."student/");
         }

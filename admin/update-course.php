@@ -100,6 +100,15 @@
                 WHERE course_id = '$course_id'
                 ";
 
+                mysqli_query($conn, $sql4);
+                
+                $sql5 = "UPDATE course_content SET
+                course_code = '$new_code'
+                WHERE course_code = '$code'
+                ";
+
+                mysqli_query($conn, $sql5);
+
                 $_SESSION['update'] = "Course Updated";
                 header("location:".SITEURL."admin/manage-courses.php");
             }

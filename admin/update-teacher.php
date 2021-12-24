@@ -11,6 +11,7 @@
                                 
                 // 1.Get the ID of selected admin
                 $id = $_GET['id'];
+                $old_username = $_GET['username'];
 
                 // 2.Create sql query to get details
                 $sql = "SELECT * FROM teacher WHERE id=$id";
@@ -81,36 +82,55 @@
         $username = $_POST['username'];
         $mail = $_POST['mail'];
         $id = $_POST['id'];
-        
-        // SQL query to update the database
-        $sql = "UPDATE teacher SET
-        full_name = '$full_name',
-        username = '$username',
-        mail = '$mail'
-        WHERE id = '$id'
-        ";
 
-        // Exetuce Query
-        $res = mysqli_query($conn, $sql) or die(mysqli_error());
-
-        // Check whether the query executed or not and display message
-        if($res==TRUE){
-        
-            //Create a session variable to display message 
-            $_SESSION['update'] = "Teacher Updated";
-            
-            //Redirect page to Manage Admin bir önceki sayfa
-            header("location:".SITEURL."admin/manage-teacher.php");
+        $change = TRUE;
+        if($username != $old_username){
+            $sql2 = "SELECT * FROM teacher WHERE username='$username'";
+            $res2 = mysqli_query($conn, $sql2) or die(mysqli_error());
+            $count2 = mysqli_num_rows($res2);
+            if($count2 != 0){
+                $change = FALSE;
+            }
         }
-        else{
+       
+        if($change){
+            // SQL query to update the database
+            $sql = "UPDATE teacher SET
+            full_name = '$full_name',
+            username = '$username',
+            mail = '$mail'
+            WHERE id = '$id'
+            ";
 
-            //Create a session variable to display message 
-            $_SESSION['update'] = "Failed to Update Teacher";
-            
+            // Exetuce Query
+            $res = mysqli_query($conn, $sql) or die(mysqli_error());
+
+            // Check whether the query executed or not and display message
+            if($res==TRUE){
+
+                //Create a session variable to display message 
+                $_SESSION['update'] = "Teacher Updated";
+                
+                //Redirect page to Manage Admin bir önceki sayfa
+                header("location:".SITEURL."admin/manage-teacher.php");
+            }
+            else{
+
+                //Create a session variable to display message 
+                $_SESSION['update'] = "Failed to Update Teacher";
+                
+                //Redirect page to Add Admin , bulundugu yer
+                header("location:".SITEURL."admin/manage-teacher.php");
+            }
+            //Then go manage admin page and display the message
+        }else{
+            $_SESSION['update'] = "Failed to Update Teacher. Username is Already Exists";
+                
             //Redirect page to Add Admin , bulundugu yer
             header("location:".SITEURL."admin/manage-teacher.php");
         }
-        //Then go manage admin page and display the message
+        
+        
 
     }
 
