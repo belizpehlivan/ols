@@ -68,6 +68,26 @@
     background-color: grey;
 }
 
+.tbl-full{
+    width: 100%;
+}
+
+.tbl-30{
+    width: 30%;
+}
+
+
+table tr th{
+    border-bottom: 1px solid black;
+    padding: 1%;
+    text-align: left;
+}
+
+table tr td{
+    padding: 1%;
+}
+
+
 /* CSS for Menu*/
 .menu{
     border-bottom: 1px solid #a4b0be;
@@ -135,7 +155,21 @@
     margin: 1%;
     padding: 2%;
 }
+.content{
+    width: 70%;
+    background-color: white;
+    margin: 1%;
+    padding: 1%;
+}
 
+.content a{
+    text-decoration: none;
+    color: #747d8c;
+    font-weight: bold;
+}
+.content a:hover{
+    color: #57606f;
+}
 .main-content h4{
     text-decoration: none; /* Underline is gone*/
     font-weight: bold;
