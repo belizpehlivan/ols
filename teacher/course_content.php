@@ -53,13 +53,17 @@
                                 <td><?php echo $content_id; ?></td>
                                 <td><?php echo $title; ?></td>
                                 <td><a href="../uploads/<?php echo $filename; ?>"><?php echo $title; ?></a></td>
-                                <td><a href="<?php echo SITEURL;?>teacher/delete-content.php?id=<?php echo $content_id; ?>" class="btn btn-danger">Delete</a></td>
+                                <td><a href="<?php echo SITEURL;?>teacher/delete-content.php?id=<?php echo $content_id; ?>&teacher_id=<?php echo $teacher_id;?>&course_id=<?php echo $course_id;?>&course_code=<?php echo $course_code;?>" class="btn btn-danger">Delete</a></td>
                             </tr>
                         <?php
                     }
                 }
                 else{
-                    echo "no course";
+                    ?>
+                    <tr>
+                        <td>No file added.</td>
+                    </tr>
+                    <?php
                 }
                 
             }
@@ -114,15 +118,17 @@
                 if($res==true)
                 {
                     //Query Executed and Category Added
-                    $_SESSION['add'] = "<div class='success'>Category Added Successfully.</div>";
+                    $_SESSION['add'] = "<div class='success'>File Added Successfully.</div>";
                     //Redirect to Manage Category Page
-                    header('location:'.SITEURL.'teacher/course_content.php?teacher_id='. $teacher_id . '&course_id=' . $course_id . '&course_code=' . $course_code);                }
+                    header('location:'.SITEURL.'teacher/course_content.php?teacher_id='. $teacher_id . '&course_id=' . $course_id . '&course_code=' . $course_code);                
+                }
                 else
                 {
                     //Failed to Add CAtegory
-                    $_SESSION['add'] = "<div class='error'>Failed to Add Category.</div>";
+                    $_SESSION['add'] = "<div class='error'>Failed to Add File.</div>";
                     //Redirect to Manage Category Page
-                    header('location:'.SITEURL.'teacher/course_content.php?teacher_id='. $teacher_id . '&course_id=' . $course_id . '&course_code=' . $course_code);                }
+                    header('location:'.SITEURL.'teacher/course_content.php?teacher_id='. $teacher_id . '&course_id=' . $course_id . '&course_code=' . $course_code);                
+                }
     }
 ?>
 <?php include('partials/footer.php'); ?>
