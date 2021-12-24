@@ -69,7 +69,7 @@
                                         <td>
                                             <a href="<?php echo SITEURL;?>admin/update-student.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update</a>
                                             <a href="<?php echo SITEURL;?>admin/delete-student.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>                                      
-                                            <a href="<?php echo SITEURL;?>admin/edit-student-course.php?student_id=<?php echo $id; ?>&student_name=<?php echo $full_name;?>" class="btn btn-primary">Edit Courses</a>
+                                            <a href="<?php echo SITEURL;?>admin/edit-student-course.php?student_id=<?php echo $id; ?>&student_name=<?php echo $full_name;?>" class="btn btn-grey">List Courses</a>
                                         </td>
                                     </tr>
 

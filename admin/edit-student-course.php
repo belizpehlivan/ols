@@ -10,6 +10,8 @@ $student_name = $_GET['student_name'];
             <div class="wrapper">
                 <h1>Edit Student Courses - <?php echo $student_name; ?></h1>
                 <br>
+                <p>If you want to add course to student, please go to Courses tab.</p>
+              
                 <?php   
                     if(isset($_SESSION['delete'])){
                         echo $_SESSION['delete'];

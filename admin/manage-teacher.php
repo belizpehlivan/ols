@@ -71,7 +71,9 @@
                                         <td><?php echo $mail; ?></td>
                                         <td>
                                             <a href="<?php echo SITEURL;?>admin/update-teacher.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update</a>
-                                            <a href="<?php echo SITEURL;?>admin/delete-teacher.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>                                        </td>
+                                            <a href="<?php echo SITEURL;?>admin/delete-teacher.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
+                                            <a href="<?php echo SITEURL;?>admin/list-teacher-courses.php?id=<?php echo $id; ?>&name=<?php echo $full_name; ?>" class="btn btn-grey">List Courses</a>
+                                        </td>
                                     </tr>
 
                                     <?php
