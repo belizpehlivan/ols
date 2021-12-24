@@ -9,35 +9,10 @@
 
             <?php   
                                 
-                // 1.Get the ID of selected course
-                $id = $_GET['id'];
-
-                // 2.Create sql query to get details
-                $sql = "SELECT * FROM course WHERE id=$id";
-
-                // 3.Execute the query
-                $res = mysqli_query($conn, $sql);
-
-                // 4.Check whether the query executed successfully or not
-                if($res == TRUE)
-                {
-                    //Check the data is available or not
-
-                    $count = mysqli_num_rows($res);
-                    if($count > 0){
-                        //Get the details
-                        $rows = mysqli_fetch_assoc($res);
-                        $code = $rows['code'];
-                        $instructor_id = $rows['instructor_id'];
-        
-                    }
-                    else
-                    {
-                        //Redirect to manage-admin page
-                        header('location:'.SITEURL.'admin/manage-courses.php');
-                    }
-                }
-               
+                // 1.Get the data of selected course
+                $course_id = $_GET['id'];
+                $code = $_GET['code'];
+                $inst_id = $_GET['inst_id'];
             ?>
 
             <form action="" method="POST">
@@ -45,14 +20,32 @@
                     <tr>
                         <td>Course Code:</td>
                         <td>
-                            <input type="text" name="code" value="<?php echo $code; ?>">
+                            <input type="text" name="new_code" value="<?php echo $code; ?>">
                         </td>
                     </tr>
                     <tr>
                         <td>Instructor ID:</td>
                         <td>
-                            <input type="text" name="instructor_id" value="<?php echo $instructor_id; ?>">
-                        </td>
+                        <select name="new_inst_id">
+                            <?php 
+                                $sql = "SELECT * FROM teacher";
+                                $res = mysqli_query($conn, $sql);
+                                if($res==TRUE){
+                                    $count = mysqli_num_rows($res);
+                                    if($count > 0){
+                                        while($rows = mysqli_fetch_assoc($res)){
+                                            $i_id = $rows['id'];
+                                            $i_full_name = $rows['full_name'];
+                                            ?>
+                                                <option value="<?php echo $i_id; ?>"><?php echo $i_id. ' - ' . $i_full_name ?></option>
+                                            <?php
+                                        }
+                                    }
+
+                                }
+                            ?>
+                        </select>
+                    </td>
                     </tr>
                     <tr>
                         <td class="colspan=2">
@@ -71,49 +64,52 @@
     if(isset($_POST['submit'])){
 
         // Get data from FORM
-        $code = $_POST['code'];
-        $instructor_id = $_POST['instructor_id'];
-        $id = $_POST['id'];
+        $new_code = $_POST['new_code'];
+        $new_inst_id = $_POST['new_inst_id'];
         
-        // SQL query to update the database
-        $sql = "UPDATE course SET
-        code = '$code',
-        instructor_id = '$instructor_id'
-        WHERE id = '$id'
-        ";
-
-        // Exetuce Query
+        $sql = "SELECT *  FROM course WHERE code='$new_code'";
         $res = mysqli_query($conn, $sql) or die(mysqli_error());
+        $count = mysqli_num_rows($res);
 
-        // Check whether the query executed or not and display message
-        if($res==TRUE){
-        
-            $selected_course_id = $_GET['id'];
-            
-            $sql2 = "UPDATE course_student SET
-            course_code = '$code'
-            WHERE course_id = '$selected_course_id'
+        $change = FALSE;
+        if($new_code != $code){ //kod değiştiyse
+            if($count==0){ //daha önceden böyle bir kod yoksa
+                $change = TRUE;
+            }
+        }
+        else{   //kod değişmemişse
+            $sql2 = "SELECT *  FROM course WHERE code='$code' AND instructor_id='$new_inst_id'";
+            $res2 = mysqli_query($conn, $sql2) or die(mysqli_error());
+            $count2 = mysqli_num_rows($res2);
+            if($count2 == 0){ // daha önceden böyle bir kurs-öğretmen yoksa
+                $change = TRUE;
+            }
+        }
+
+        if($change){
+            $sql3 = "UPDATE course SET
+            code = '$new_code',
+            instructor_id = '$new_inst_id'
+            WHERE id = '$course_id'
             ";
-            $res2 = mysqli_query($conn, $sql2);
-      
+            $res3 = mysqli_query($conn, $sql3) or die(mysqli_error());
+            if($res3==TRUE){
 
-           
-            $_SESSION['update'] = "Course Updated";
-            header("location:".SITEURL."admin/manage-courses.php");
-        }
-        else{
+                $sql4 = "UPDATE course_student SET
+                course_code = '$new_code'
+                WHERE course_id = '$course_id'
+                ";
 
-            //Create a session variable to display message 
+                $_SESSION['update'] = "Course Updated";
+                header("location:".SITEURL."admin/manage-courses.php");
+            }
+
+        }else{
             $_SESSION['update'] = "Failed to Update Course";
-            
-            //Redirect page to Add Admin , bulundugu yer
             header("location:".SITEURL."admin/manage-courses.php");
         }
-        //Then go manage admin page and display the message
-
+        
     }
-
-    
 
 ?>
 

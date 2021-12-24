@@ -17,7 +17,7 @@ if($res == TRUE){
     $res2 = mysqli_query($conn, $sql2);
     
     if($res2 == TRUE){
-        $_SESSION['delete-course-of-student'] = "$id Course-Student Deleted Successfully";
+        $_SESSION['delete-course-of-student'] = "Deleted Successfully";
         header('location:'.SITEURL.'admin/manage-courses.php');
     }
     else{

@@ -26,6 +26,7 @@
                                 Name: <span class="font-small"><?php echo $full_name; ?></span><br><br>            
                                 Username: <span class="font-small"><?php echo $username; ?></span><br><br>
                                 Mail: <span class="font-small"><?php echo $mail; ?></span><br><br>
+                                <a href="<?php echo SITEURL;?>student/update-password.php?id=<?php echo $id; ?>" class="btn btn-grey">Change Password</a>
                                 <?php
                             }
                             else{

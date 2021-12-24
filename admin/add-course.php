@@ -11,17 +11,37 @@
                 unset($_SESSION['add']); // Remove session message
             }
         ?>
-    
+
         <!-- Add Course Form Starts Here -->
         <form action="" method="POST">
             <table class="tbl-30">
-                <tr>
+                <tr>    
                     <td>Course Code:</td>
                     <td><input type="text" name="code" placeholder="Enter Course Code"></td>
                 </tr>
                 <tr>
                     <td>Instructor Id:</td>
-                    <td><input type="text" name="instructor_id" placeholder="Enter Instructor Id"></td>
+                    <td>
+                        <select name="instructor_id">
+                            <?php 
+                                $sql = "SELECT * FROM teacher";
+                                $res = mysqli_query($conn, $sql);
+                                if($res==TRUE){
+                                    $count = mysqli_num_rows($res);
+                                    if($count > 0){
+                                        while($rows = mysqli_fetch_assoc($res)){
+                                            $id = $rows['id'];
+                                            $full_name = $rows['full_name'];
+                                            ?>
+                                                <option value="<?php echo $id; ?>"><?php echo $id. ' - ' . $full_name ?></option>
+                                            <?php
+                                        }
+                                    }
+
+                                }
+                            ?>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td class="colspan=2"><input type="submit" name="submit" value="Add" class="btn btn-secondary"></td>
@@ -36,39 +56,36 @@
         
         // Get data from form
         $code = $_POST['code'];
-        $instructor_id = $_POST['instructor_id'];
+       $instructor_id = $_POST['instructor_id'];
 
-        $sql2 = "SELECT *  FROM teacher WHERE id='$instructor_id'";
-        $res2 = mysqli_query($conn, $sql2) or die(mysqli_error());
-        if($res2==TRUE){
-            $count = mysqli_num_rows($res2);
-            if($count==1){
-                
-                // SQL query to save the data into database
-                $sql = "INSERT INTO course SET
-                code = '$code',
-                instructor_id = '$instructor_id'
-                ";
+       
 
-                // Exetuce Query
-                $res = mysqli_query($conn, $sql) or die(mysqli_error());
+        $course_exists = "SELECT *  FROM course WHERE code='$code'";
+        $res3 = mysqli_query($conn, $course_exists) or die(mysqli_error());
+        $cnt = mysqli_num_rows($res3);
 
-                // Check whether the query executed or not and display message
-                if($res==TRUE){
-                    $_SESSION['add'] = "Course Added Successfully";
-                    header("location:".SITEURL."admin/manage-courses.php");
-                }
-                else{
-                    $_SESSION['add'] = "Failed to Add Course";
-                    header("location:".SITEURL."admin/add-course.php");
-                }
+        if(!($cnt == 1)){
+
+            $sql = "INSERT INTO course SET
+            code = '$code',
+            instructor_id = '$instructor_id'
+            ";
+                   
+            $res = mysqli_query($conn, $sql) or die(mysqli_error());
+                       
+            if($res==TRUE){
+                $_SESSION['add'] = "Course Added Successfully";
+                header("location:".SITEURL."admin/manage-courses.php");
             }
             else{
-                //Teacher does not exists
-                //Create a session variable to display error message and redirect
-                $_SESSION['instructor-not-found'] = "Instructor Not Found";
-                header('location:'.SITEURL.'admin/manage-courses.php');
+                $_SESSION['add'] = "Failed to Add Course";
+                header("location:".SITEURL."admin/add-course.php");
             }
+            
+        }
+        else{
+            $_SESSION['course-exists'] = "Course is Already Exists";
+            header("location:".SITEURL."admin/manage-courses.php");
         }
     }
 ?>

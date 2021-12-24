@@ -30,6 +30,10 @@
                         echo $_SESSION['add-student-to-course'];
                         unset($_SESSION['add-student-to-course']); 
                     }
+                    if(isset($_SESSION['course-exists'])){
+                        echo $_SESSION['course-exists'];
+                        unset($_SESSION['course-exists']); 
+                    }
 
                 ?>
                 <br><br>
@@ -41,7 +45,7 @@
                         <th>S.N.</th>
                         <th>Course ID</th>
                         <th>Course Code</th>
-                        <th>Instructor Name</th>
+                        <th>Instructor ID</th>
                         <th>Actions</th>
                     </tr>
                     <?php 
@@ -78,7 +82,7 @@
                                         <td><?php echo $code; ?></td>
                                         <td><?php echo $instructor_id; ?></td>
                                         <td>
-                                            <a href="<?php echo SITEURL;?>admin/update-course.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update</a>
+                                            <a href="<?php echo SITEURL;?>admin/update-course.php?id=<?php echo $id; ?>&code=<?php echo $code;?>&inst_id=<?php echo $instructor_id;?>" class="btn btn-secondary">Update</a>
                                             <a href="<?php echo SITEURL;?>admin/delete-course.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
                                             <a href="<?php echo SITEURL;?>admin/add-student-to-course.php?course_id=<?php echo $id;?>&course_code=<?php echo $code;?>" class="btn btn-primary">Add Student</a>
                                         </td>

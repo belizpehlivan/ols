@@ -27,6 +27,61 @@
     float: none;
     clear: both;
 }
+
+
+.btn{
+    border-radius: 4px;
+    text-decoration: none; /* Underline is gone*/ 
+    padding: 1%;
+    color: white;
+    font-size: 13px;
+}
+
+.btn-primary{
+    background-color: #0099CC; 
+}
+
+.btn-primary:hover{
+    background-color: #33b5e5;
+}
+
+.btn-secondary{
+    background-color: #007E33;
+}
+
+.btn-secondary:hover{
+    background-color: #00C851;
+}
+
+.btn-danger{
+    background-color: #CC0000;
+}
+
+.btn-danger:hover{
+    background-color: #ff4444;
+}
+.btn-grey{
+    background-color: grey;
+}
+
+.btn-grey:hover{
+    background-color: grey;
+}
+
+/* CSS for Menu*/
+.menu{
+    border-bottom: 1px solid #a4b0be;
+}
+
+.menu ul{
+    list-style-type: none; /* Liste noktaları gider*/
+}
+
+.menu ul li{
+    display: inline; /*List in horizontal line*/
+    padding: 1%;
+}
+
 /* CSS for Menu*/
 
 
