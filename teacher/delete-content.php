@@ -2,7 +2,6 @@
 
 include('../config/constants.php');
 
-echo $teacher_id = $_GET['teacher_id'];
 echo $course_id = $_GET['course_id'];
 echo $course_code = $_GET['course_code'];
 
@@ -12,11 +11,12 @@ $res = mysqli_query($conn, $sql);
 
 if($res == TRUE){
    $_SESSION['delete'] = "Content Deleted Successfully";
-   header('location:'.SITEURL.'teacher/course_content.php?teacher_id=' . $teacher_id  . '&course_id='  . $course_id  . '&course_code=' . $course_code);
+   header('location:'.SITEURL.'teacher/course_content.php?course_id='  . $course_id  . '&course_code=' . $course_code);
 }
 else{
     $_SESSION['delete'] = "Failed to Delete";
-    header('location:'.SITEURL.'teacher/course_content.php');
+    header('location:'.SITEURL.'teacher/course_content.php?course_id='  . $course_id  . '&course_code=' . $course_code);
+
 }
 
 

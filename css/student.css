@@ -28,6 +28,9 @@
     clear: both;
 }
 
+.index-header{
+    color: #747d8c;
+}
 
 .btn{
     border-radius: 4px;
@@ -154,6 +157,15 @@ table tr td{
     background-color: white;
     margin: 1%;
     padding: 2%;
+}
+
+.course a{
+    text-decoration: none;
+    color: #747d8c;
+    font-weight: bold;
+}
+.course a:hover{
+    color: #57606f;
 }
 .content{
     width: 70%;

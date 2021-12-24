@@ -1,5 +1,4 @@
 <?php include('partials/menu.php'); 
-    echo $teacher_id = $_GET['teacher_id'];
     echo $course_id = $_GET['course_id'];
     echo $course_code = $_GET['course_code'];
 ?>
@@ -36,7 +35,7 @@
             </tr>
         <?php
             
-            $sql = "SELECT * FROM course_content WHERE course_id = '$course_id'";
+            $sql = "SELECT * FROM course_content WHERE course_code = '$course_code'";
             $res = mysqli_query($conn, $sql);
             if($res==TRUE){
                 $count = mysqli_num_rows($res);
@@ -52,8 +51,8 @@
                                 <td><?php echo $sn++; ?></td>
                                 <td><?php echo $content_id; ?></td>
                                 <td><?php echo $title; ?></td>
-                                <td><a href="../uploads/<?php echo $filename; ?>"><?php echo $title; ?></a></td>
-                                <td><a href="<?php echo SITEURL;?>teacher/delete-content.php?id=<?php echo $content_id; ?>&teacher_id=<?php echo $teacher_id;?>&course_id=<?php echo $course_id;?>&course_code=<?php echo $course_code;?>" class="btn btn-danger">Delete</a></td>
+                                <td><a href="../uploads/<?php echo $filename; ?>"><?php echo $filename; ?></a></td>
+                                <td><a href="<?php echo SITEURL;?>teacher/delete-content.php?id=<?php echo $content_id; ?>&course_id=<?php echo $course_id;?>&course_code=<?php echo $course_code;?>" class="btn btn-danger">Delete</a></td>
                             </tr>
                         <?php
                     }
@@ -93,7 +92,7 @@
                     //SEt message
                 $_SESSION['upload'] = "<div class='error'>Failed to Upload File. </div>";
                     //Redirect to Add CAtegory Page
-                header('location:'.SITEURL.'teacher/course_content.php?teacher_id='. $teacher_id . '&course_id=' . $course_id . '&course_code=' . $course_code);
+                header('location:'.SITEURL.'teacher/course_content.php?course_id=' . $course_id . '&course_code=' . $course_code);
                     //STop the Process
                 die();
             }
@@ -105,9 +104,8 @@
         }
 
         $sql = "INSERT INTO course_content SET 
-                    course_id='$course_id',
+                    course_code='$course_code',
                     file_name='$file_namee',
-                    instructor_id ='$teacher_id',
                     title = '$title'
                 ";
 
@@ -120,14 +118,14 @@
                     //Query Executed and Category Added
                     $_SESSION['add'] = "<div class='success'>File Added Successfully.</div>";
                     //Redirect to Manage Category Page
-                    header('location:'.SITEURL.'teacher/course_content.php?teacher_id='. $teacher_id . '&course_id=' . $course_id . '&course_code=' . $course_code);                
+                    header('location:'.SITEURL.'teacher/course_content.php?course_id=' . $course_id . '&course_code=' . $course_code);                
                 }
                 else
                 {
                     //Failed to Add CAtegory
                     $_SESSION['add'] = "<div class='error'>Failed to Add File.</div>";
                     //Redirect to Manage Category Page
-                    header('location:'.SITEURL.'teacher/course_content.php?teacher_id='. $teacher_id . '&course_id=' . $course_id . '&course_code=' . $course_code);                
+                    header('location:'.SITEURL.'teacher/course_content.php?course_id=' . $course_id . '&course_code=' . $course_code);                
                 }
     }
 ?>

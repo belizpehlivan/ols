@@ -24,7 +24,7 @@
                                         $course_id = $rowscourse['code'];
                                         ?>
                                             <div class="course">
-                                                <a href="course_content.php?teacher_id=<?php echo $id;?>&course_id=<?php echo $course_id;?>&course_code=<?php echo $course_code;?>"><?php echo $course_code; ?></a>
+                                                <a href="course_content.php?course_id=<?php echo $course_id;?>&course_code=<?php echo $course_code;?>"><?php echo $course_code; ?></a>
                                             </div>
                                         <?php
                                     }

@@ -36,29 +36,7 @@
                         }
                     ?>
                     </div>
-                    <div class="col-4 text-left">
-                        <h4>Courses</h4>
-                        <br>
-                        <ul class="text-left">
-                            <?php
-                                $sql2 = "SELECT * FROM course_student WHERE student_id = '$id'";
-                                $res2 = mysqli_query($conn, $sql2);
-                                if($res2==TRUE){
-                                    $count2 = mysqli_num_rows($res2);
-                                    if($count2 > 0){
-                                        while($rowscourse = mysqli_fetch_assoc($res2)){
-                                            $course_code = $rowscourse['course_code'];
-                                            ?>
-                                              <li class="margin-2"><?php echo $course_code; ?></li>
-                                            <?php
-                                        }
-                                    }else{
-                                         //no course
-                                    }
-                                }
-                            ?>
-                        </ul>
-                    </div>
+                    
                 <div class="clearfix"></div>
             </div>
         </div>

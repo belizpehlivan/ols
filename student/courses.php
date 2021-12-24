@@ -21,10 +21,10 @@
                                 if($count2 > 0){
                                     while($rowscourse = mysqli_fetch_assoc($res2)){
                                         $course_code = $rowscourse['course_code'];
+                                        $course_id = $rowscourse['course_id'];
                                         ?>
                                             <div class="course">
-                                                <a href=""></a>
-                                            <h4><?php echo $course_code; ?></h4>
+                                            <a href="course_content.php?course_id=<?php echo $course_id;?>&course_code=<?php echo $course_code;?>"><?php echo $course_code; ?></a>                                           
                                             </div>
                                         <?php
                                     }

@@ -83,8 +83,10 @@
                                         <td><?php echo $instructor_id; ?></td>
                                         <td>
                                             <a href="<?php echo SITEURL;?>admin/update-course.php?id=<?php echo $id; ?>&code=<?php echo $code;?>&inst_id=<?php echo $instructor_id;?>" class="btn btn-secondary">Update</a>
-                                            <a href="<?php echo SITEURL;?>admin/delete-course.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
+                                            <a href="<?php echo SITEURL;?>admin/delete-course.php?id=<?php echo $id; ?>&code=<?php echo $code;?>" class="btn btn-danger">Delete</a>
                                             <a href="<?php echo SITEURL;?>admin/add-student-to-course.php?course_id=<?php echo $id;?>&course_code=<?php echo $code;?>" class="btn btn-primary">Add Student</a>
+                                            <a href="course_content.php?course_id=<?php echo $id;?>&course_code=<?php echo $code;?>" class="btn btn-grey">Content</a>
+
                                         </td>
                                     </tr>
 
