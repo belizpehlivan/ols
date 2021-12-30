@@ -12,6 +12,8 @@
                 // 1.Get the ID of selected admin
                 $id = $_GET['id'];
                 $old_username = $_GET['username'];
+                $old_username = $_GET['username'];
+                $old_mail = $_GET['mail'];
 
                 // 2.Create sql query to get details
                 $sql = "SELECT * FROM teacher WHERE id=$id";
@@ -88,10 +90,69 @@
             $sql2 = "SELECT * FROM teacher WHERE username='$username'";
             $res2 = mysqli_query($conn, $sql2) or die(mysqli_error());
             $count2 = mysqli_num_rows($res2);
-            if($count2 != 0){
-                $change = FALSE;
+            if($count2 > 0){
+                $exists_username = TRUE;
+                $_SESSION['update'] = "Username is already exists.";
+            }
+            else{
+                $exists_username = FALSE;
             }
         }
+
+        if($mail != $old_mail){
+            $sql3 = "SELECT * FROM teacher WHERE mail='$mail'";
+            $res3 = mysqli_query($conn, $sql3) or die(mysqli_error());
+            $count3 = mysqli_num_rows($res3);
+            
+            if($count3 > 0){
+                $exists_mail = TRUE;
+                $_SESSION['update'] = "Mail is already exists.";
+            }
+            else{
+                $exists_mail = FALSE;
+            }
+        }
+
+        if($exists_username && $exists_mail){ // both are already exists
+            $_SESSION['update'] = "Username and mail is already exists.";
+            header("location:".SITEURL."admin/manage-teacher.php");
+        }
+        else{
+            if((!$exists_username)&&(!$exists_mail)) { 
+                $sql = "UPDATE teacher SET
+                full_name = '$full_name',
+                username = '$username',
+                mail = '$mail'
+                WHERE id = '$id'
+                ";
+                $_SESSION['update'] = "Teacher information is changed successfully.";
+            }
+            elseif(($exists_username == FALSE)&&($exists_mail == TRUE)){ // Only mail exists
+                $sql = "UPDATE teacher SET
+                full_name = '$full_name',
+                username = '$username'
+                WHERE id = '$id'
+                ";
+            }
+            elseif(($exists_username == TRUE)&&($exists_mail == FALSE)) { // Only username exists
+                $sql = "UPDATE teacher SET
+                full_name = '$full_name',
+                mail = '$mail'
+                WHERE id = '$id'
+                ";
+                $_SESSION['update'] = "Username is already exists.";
+            }
+            $res = mysqli_query($conn, $sql) or die(mysqli_error());
+            if($res==TRUE){
+                header("location:".SITEURL."admin/manage-teacher.php");
+            }else{
+                $_SESSION['update'] = "Failed to Update Teacher";
+                header("location:".SITEURL."admin/manage-teacher.php");
+            }
+
+        }
+        
+/*
        
         if($change){
             // SQL query to update the database
@@ -124,13 +185,13 @@
             }
             //Then go manage admin page and display the message
         }else{
-            $_SESSION['update'] = "Failed to Update Teacher. Username is Already Exists";
+            $_SESSION['update'] = "Failed to Update Teacher.";
                 
             //Redirect page to Add Admin , bulundugu yer
             header("location:".SITEURL."admin/manage-teacher.php");
         }
         
-        
+    */    
 
     }
 

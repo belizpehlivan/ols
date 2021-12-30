@@ -4,6 +4,7 @@
         <div class="main-content">
             <div class="wrapper">
                 <h1>Courses</h1>
+                <br><br>
                 <?php
                     $act_user = $_SESSION['user'];
                     $sql = "SELECT * FROM teacher WHERE username = '$act_user'";

@@ -3,6 +3,26 @@
         <div class="main-content">
             <div class="wrapper">
                 <h1>Profile</h1>
+                <br>
+                <?php   
+                    if(isset($_SESSION['update-mail'])){
+                        echo $_SESSION['update-mail'];
+                        unset($_SESSION['update-mail']); 
+                    }
+                    if(isset($_SESSION['change-pwd'])){
+                        echo $_SESSION['change-pwd'];
+                        unset($_SESSION['change-pwd']); 
+                    }
+                    if(isset($_SESSION['user-not-found'])){
+                        echo $_SESSION['user-not-found'];
+                        unset( $_SESSION['user-not-found']); 
+                    }
+                    if(isset($_SESSION['pwd-not-match'])){
+                        echo $_SESSION['user-not-found'];
+                        unset( $_SESSION['user-not-found']); 
+                    }
+                ?>
+                <br>
                 <div class="col-4 text-left">
                     <h4>User Details</h4>
                     <br>
@@ -25,7 +45,7 @@
                                 
                                 Name: <span class="font-small"><?php echo $full_name; ?></span><br><br>            
                                 Username: <span class="font-small"><?php echo $username; ?></span><br><br>
-                                Mail: <span class="font-small"><?php echo $mail; ?></span><br><br>
+                                Mail: <span class="font-small"><?php echo $mail; ?></span>  <a href="<?php echo SITEURL;?>teacher/update-mail.php?id=<?php echo $id; ?>" class="btn btn-grey">Change Mail</a> <br><br>
                                 <a href="<?php echo SITEURL;?>teacher/update-password.php?id=<?php echo $id; ?>" class="btn btn-grey">Change Password</a>
 
                                 <?php

@@ -20,9 +20,9 @@
                         echo $_SESSION['update'];
                         unset($_SESSION['update']);
                     }
-                    if(isset($_SESSION['user-not-found'])){
-                        echo $_SESSION['user-not-found'];
-                        unset($_SESSION['user-not-found']);
+                    if(isset($_SESSION['update-password'])){
+                        echo $_SESSION['update-password'];
+                        unset($_SESSION['update-password']);
                     }
                     if(isset($_SESSION['pwd-not-match'])){
                         echo $_SESSION['pwd-not-match'];

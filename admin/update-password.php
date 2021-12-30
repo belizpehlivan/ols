@@ -100,7 +100,7 @@
             else{
                 //User does not exists
                 //Create a session variable to display error message and redirect
-                $_SESSION['user-not-found'] = "User Not Found";
+                $_SESSION['update-password'] = "Failed to Change Password";
                 header('location:'.SITEURL.'admin/manage-admin.php');
                 //manage-admin'de display message
 

@@ -67,7 +67,7 @@
                                         <td><?php echo $username; ?></td>
                                         <td><?php echo $mail; ?></td>
                                         <td>
-                                            <a href="<?php echo SITEURL;?>admin/update-student.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update</a>
+                                            <a href="<?php echo SITEURL;?>admin/update-student.php?id=<?php echo $id; ?>&username=<?php echo $username;?>&mail=<?php echo $mail;?>" class="btn btn-secondary">Update</a>
                                             <a href="<?php echo SITEURL;?>admin/delete-student.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>                                      
                                             <a href="<?php echo SITEURL;?>admin/edit-student-course.php?student_id=<?php echo $id; ?>&student_name=<?php echo $full_name;?>" class="btn btn-grey">List Courses</a>
                                         </td>
