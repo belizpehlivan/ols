@@ -12,7 +12,6 @@
                 // 1.Get the ID of selected admin
                 $id = $_GET['id'];
                 $old_username = $_GET['username'];
-                $old_username = $_GET['username'];
                 $old_mail = $_GET['mail'];
 
                 // 2.Create sql query to get details
@@ -85,7 +84,7 @@
         $mail = $_POST['mail'];
         $id = $_POST['id'];
 
-        $change = TRUE;
+        //$change = TRUE;
         if($username != $old_username){
             $sql2 = "SELECT * FROM teacher WHERE username='$username'";
             $res2 = mysqli_query($conn, $sql2) or die(mysqli_error());

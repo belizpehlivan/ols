@@ -34,7 +34,7 @@
             <!-- Login Form Starts Here -->
 
             <br><br>
-            <p class="text-center">Copyright ©2020 - E-Learning - All rights reserved.</p>
+            <p class="text-center">Copyright ©2021 - E-Learning - All rights reserved.</p>
         </div>
     </body>
 </html>
