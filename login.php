@@ -6,6 +6,10 @@
     </head>
     <body> 
         <div class="login">
+            <div class="text-right">
+                <h5>Admin Login</h5>
+                <a href="admin/login.php" class="forward-link"><img src="https://img.icons8.com/ios-filled/50/000000/arrow.png"/></a><br>               
+            </div>
             <h1 class="text-center">Login</h1>
             <br>
             <?php   
@@ -41,6 +45,10 @@
 
                 <input type="submit" name="submit-student" value="Login" class="btn btn-primary">
             </form>
+            <br>
+            
+            
+            
             <!-- Login Form Starts Here -->
 
             <br><br>

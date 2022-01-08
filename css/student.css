@@ -9,6 +9,9 @@
     width: 90%; /*ekranın %90ini kaplar*/
     margin: 0 auto; /*centers on screen*/
 }
+.wrapper h1{
+   color: #747d8c;
+}
 
 .text-center{
     text-align: center;

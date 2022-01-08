@@ -85,6 +85,12 @@ table tr td{
 .btn-grey:hover{
     background-color: grey;
 }
+
+.forward-link{
+    text-decoration: none;
+    font-weight: bold;
+}
+
 /* CSS for Menu*/
 .menu{
     border-bottom: 1px solid #a4b0be;
