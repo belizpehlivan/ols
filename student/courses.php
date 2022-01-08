@@ -4,6 +4,7 @@
         <div class="main-content">
             <div class="wrapper">
                 <h1>Courses</h1>
+                <br><br>
                 <?php
                     $act_user = $_SESSION['user'];
                     $sql = "SELECT * FROM student WHERE username = '$act_user'";
@@ -22,9 +23,15 @@
                                     while($rowscourse = mysqli_fetch_assoc($res2)){
                                         $course_code = $rowscourse['course_code'];
                                         $course_id = $rowscourse['course_id'];
+
+                                        $sql3 = "SELECT * FROM course WHERE id='$course_id'";
+                                        $res3 = mysqli_query($conn, $sql3);
+                                        $rows3 = mysqli_fetch_assoc($res3);
+                                        $course_name = $rows3['course_name']; 
+
                                         ?>
                                             <div class="course">
-                                            <a href="course_content.php?course_id=<?php echo $course_id;?>&course_code=<?php echo $course_code;?>"><?php echo $course_code; ?></a>                                           
+                                            <a href="course_content.php?course_id=<?php echo $course_id;?>&course_code=<?php echo $course_code;?>&course_name=<?php echo $course_name;?>"><?php echo $course_code . " - " . $course_name ; ?></a>                                           
                                             </div>
                                         <?php
                                     }

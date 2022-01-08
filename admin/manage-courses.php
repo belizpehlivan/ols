@@ -45,6 +45,7 @@
                         <th>S.N.</th>
                         <th>Course ID</th>
                         <th>Course Code</th>
+                        <th>Course Name</th>
                         <th>Instructor ID</th>
                         <th>Actions</th>
                     </tr>
@@ -71,18 +72,18 @@
                                     //Get individual data
                                     $id = $rows['id'];
                                     $code = $rows['code'];
-                                    $instructor_id = $rows['instructor_id'];
-
-                                    //Display the values in the table
+                                    $course_name = $rows['course_name'];
+                                    $instructor_id = $rows['instructor_id'];                                
                                     ?>
 
                                     <tr>
                                         <td><?php echo $sn++; ?></td>
                                         <td><?php echo $id; ?></td>
                                         <td><?php echo $code; ?></td>
+                                        <td><?php echo $course_name; ?></td>
                                         <td><?php echo $instructor_id; ?></td>
                                         <td>
-                                            <a href="<?php echo SITEURL;?>admin/update-course.php?id=<?php echo $id; ?>&code=<?php echo $code;?>&inst_id=<?php echo $instructor_id;?>" class="btn btn-secondary">Update</a>
+                                            <a href="<?php echo SITEURL;?>admin/update-course.php?id=<?php echo $id; ?>&code=<?php echo $code;?>&course_name=<?php echo $course_name;?>&inst_id=<?php echo $instructor_id;?>" class="btn btn-secondary">Update</a>
                                             <a href="<?php echo SITEURL;?>admin/delete-course.php?id=<?php echo $id; ?>&code=<?php echo $code;?>" class="btn btn-danger">Delete</a>
                                             <a href="<?php echo SITEURL;?>admin/add-student-to-course.php?course_id=<?php echo $id;?>&course_code=<?php echo $code;?>" class="btn btn-primary">Add Student</a>
                                             <a href="course_content.php?course_id=<?php echo $id;?>&course_code=<?php echo $code;?>" class="btn btn-grey">Content</a>

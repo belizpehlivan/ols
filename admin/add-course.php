@@ -19,6 +19,10 @@
                     <td>Course Code:</td>
                     <td><input type="text" name="code" placeholder="Enter Course Code"></td>
                 </tr>
+                <tr>    
+                    <td>Course  Name:</td>
+                    <td><input type="text" name="name" placeholder="Enter Course Name"></td>
+                </tr>
                 <tr>
                     <td>Instructor Id:</td>
                     <td>
@@ -56,6 +60,7 @@
         
         // Get data from form
         $code = $_POST['code'];
+        $name = $_POST['name'];
        $instructor_id = $_POST['instructor_id'];
 
        
@@ -68,7 +73,8 @@
 
             $sql = "INSERT INTO course SET
             code = '$code',
-            instructor_id = '$instructor_id'
+            instructor_id = '$instructor_id',
+            course_name = '$name'
             ";
                    
             $res = mysqli_query($conn, $sql) or die(mysqli_error());

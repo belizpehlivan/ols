@@ -15,10 +15,10 @@
                 <table class="tbl-full">
                     <tr>
                         <th>S.N.</th>
-                        <th>Student Name</th>
-                        <th>Student ID</th>
-                        <th>Course Code</th>
                         <th>Course ID</th>
+                        <th>Course Code</th>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
                         <th>Actions</th>
                     </tr>
                     <?php 
@@ -53,10 +53,10 @@
 
                                     <tr>
                                         <td><?php echo $sn++; ?></td>
-                                        <td><?php echo $student_name; ?></td>
-                                        <td><?php echo $student_id; ?></td>
-                                        <td><?php echo $course_code; ?></td>
                                         <td><?php echo $course_id; ?></td>
+                                        <td><?php echo $course_code; ?></td>
+                                        <td><?php echo $student_id; ?></td>
+                                        <td><?php echo $student_name; ?></td>
                                         <!-- <td><?php echo $instructor_id; ?></td> -->
                                         <td>
                                             <a href="<?php echo SITEURL;?>admin/delete-course-from-student.php?student_id=<?php echo $student_id; ?>&course_id=<?php echo $course_id;?>" class="btn btn-danger">Delete</a>                                        

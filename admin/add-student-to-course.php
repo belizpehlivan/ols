@@ -25,8 +25,8 @@
                                     $count = mysqli_num_rows($res);
                                     if($count > 0){
                                         while($rows = mysqli_fetch_assoc($res)){
-                                            $id = $rows['id'];
-                                            $full_name = $rows['full_name'];
+                                            $id = $rows['id']; //student id 
+                                            $full_name = $rows['full_name']; //student name
                                             ?>
                                                 <option value="<?php echo $id; ?>"><?php echo $id. ' - ' . $full_name ?></option>
                                             <?php
@@ -65,7 +65,7 @@
             header("location:".SITEURL."admin/manage-courses.php");
         }else{
 
-            $sql = "SELECT *  FROM student WHERE id='$id'";
+            $sql = "SELECT *  FROM student WHERE id='$student_id'";
             $res = mysqli_query($conn, $sql) or die(mysqli_error());
             $rows = mysqli_fetch_assoc($res);
             $student_name = $rows['full_name'];

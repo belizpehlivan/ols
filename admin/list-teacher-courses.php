@@ -17,6 +17,7 @@
                         <th>S.N.</th>
                         <th>Course ID</th>
                         <th>Course Code</th>
+                        <th>Course Name</th>
                     </tr>
                     <?php 
                         //Query to get all
@@ -38,12 +39,19 @@
                                 while($rows = mysqli_fetch_assoc($res)){
                                     $id = $rows['id'];
                                     $code = $rows['code'];
+
+                                    $sql2 = "SELECT * FROM course WHERE id='$id'";
+                                    $res2 = mysqli_query($conn, $sql2);
+                                    $rows2 = mysqli_fetch_assoc($res2);
+                                    $course_name = $rows2['course_name']; 
+
                                     ?>
 
                                     <tr>
                                         <td><?php echo $sn++; ?></td>
                                         <td><?php echo $id; ?></td>
                                         <td><?php echo $code; ?></td>
+                                        <td><?php echo $course_name; ?></td>
                                     </tr>
 
                                     <?php

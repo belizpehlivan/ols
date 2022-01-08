@@ -22,8 +22,9 @@ $student_name = $_GET['student_name'];
                 <table class="tbl-full">
                     <tr>
                         <th>S.N.</th>
-                        <th>Course Code</th>
                         <th>Course ID</th>
+                        <th>Course Code</th>
+                        <th>Course Name</th>
                         <th>Action</th>
                     </tr>
                     <?php 
@@ -37,13 +38,19 @@ $student_name = $_GET['student_name'];
                                 while($rows = mysqli_fetch_assoc($res)){
                                     $course_code = $rows['course_code'];
                                     $course_id = $rows['course_id'];
+
+                                    $sql2 = "SELECT * FROM course WHERE id='$course_id'";
+                                    $res2 = mysqli_query($conn, $sql2);
+                                    $rows2 = mysqli_fetch_assoc($res2);
+                                    $course_name = $rows2['course_name']; 
                                 ?>
                                     <tr>
                                         <td><?php echo $sn++; ?></td>
-                                        <td><?php echo $course_code; ?></td>
                                         <td><?php echo $course_id; ?></td>
+                                        <td><?php echo $course_code; ?></td>
+                                        <td><?php echo $course_name; ?></td>
                                         <td>
-                                            <a href="<?php echo SITEURL;?>admin/edit-student-delete-course-from-student.php?student_id=<?php echo $student_id; ?>&course_id=<?php echo $course_id;?>&student_name=<?php echo $student_name;?>" class="btn btn-danger">Delete</a>                                        
+                                            <a href="<?php echo SITEURL;?>admin/edit-student-delete-course-from-student.php?student_id=<?php echo $student_id; ?>&course_id=<?php echo $course_id;?>&course_name=<?php echo $course_name;?>&student_name=<?php echo $student_name;?>" class="btn btn-danger">Delete</a>                                        
                                         </td>
                                     </tr>
 

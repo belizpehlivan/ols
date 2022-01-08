@@ -22,10 +22,12 @@
                                 if($count2 > 0){
                                     while($rowscourse = mysqli_fetch_assoc($res2)){
                                         $course_code = $rowscourse['code'];
-                                        $course_id = $rowscourse['code'];
+                                        $course_id = $rowscourse['id'];
+                                        $course_name = $rowscourse['course_name']; 
+
                                         ?>
                                             <div class="course">
-                                                <a href="course_content.php?course_id=<?php echo $course_id;?>&course_code=<?php echo $course_code;?>"><?php echo $course_code; ?></a>
+                                                <a href="course_content.php?course_id=<?php echo $course_id;?>&course_code=<?php echo $course_code; ?>&course_name=<?php echo $course_name; ?>"><?php echo $course_code . " - " . $course_name; ?></a>
                                             </div>
                                         <?php
                                     }

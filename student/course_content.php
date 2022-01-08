@@ -2,12 +2,13 @@
 
     $course_id = $_GET['course_id'];
     $course_code = $_GET['course_code'];
+    $course_name = $_GET['course_name'];
 ?>
 
 <!--Main Content Sectiopn Starts-->
 <div class="main-content">
     <div class="wrapper">
-        <h1>Course Content - <?php echo $course_code;?></h1>
+        <h1>Course Content - <?php echo $course_code . " " . $course_name;?></h1>
         <br><br>
         <table class="tbl-full">
             <tr>
